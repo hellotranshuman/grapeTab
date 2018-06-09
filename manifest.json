@@ -1,0 +1,37 @@
+{
+    "manifest_version": 2,
+   
+    "name": "grapeTab",
+    "description": "__MSG_service_description__",
+    "version": "1.0",
+
+    "default_locale":"en",
+   
+    "browser_action": {
+      "default_popup": "popup.html",
+      "default_title": "grapeTab",
+      "default_icon": {
+        "16" : "app/img/icon/icon16.png",
+        "32" : "app/img/icon/icon32.png",
+        "48" : "app/img/icon/icon48.png",
+        "128": "app/img/icon/icon128.png"
+      }
+    },
+
+    "background": {
+      "scripts": ["app/js/background.js"],
+      "persistent": false
+    },
+
+    "icons": {    
+      "16" : "app/img/icon/icon16.png",
+      "32" : "app/img/icon/icon32.png",
+      "48" : "app/img/icon/icon48.png",
+      "128": "app/img/icon/icon128.png"
+    },
+
+    "permissions": [
+      "activeTab",
+      "storage"
+    ]
+}

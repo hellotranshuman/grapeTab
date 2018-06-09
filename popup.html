@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <!-- bootstrap css file-->
+    <link href="app/bootstrap/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!-- popup.html에서 사용되는 CSS -->
+    <link href="app/css/popup.css" rel="stylesheet" type="text/css">
+
+  </head>
+  <body>
+    <!-- jquery -->
+    <script src="app/jquery/jquery-3.3.1.min.js"></script>
+    <script src="app/js/common.js"></script>
+    <script src="app/js/popup.js"></script>
+
+    <div class="contain">
+
+        <div class="row">
+            <!-- 
+              justify-content-center  : 좌우 정렬 
+              align-content-center    : 상하 정렬
+            -->
+            <div class="col select-area border d-flex align-content-center flex-wrap justify-content-center"> <!-- align-content-center 지우기 -->
+              <div class="row justify-content-center"> <!-- align-self-center -->
+                <div class="col-10">
+                  <img class="card-img-bottom" src="app/img/list.png" id="list">
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col">
+                    <span id="listName"></span>
+                  </div>
+                </div>
+  
+            </div>  
+            <div class="col select-area border d-flex align-content-center flex-wrap justify-content-center">
+              <div class="row justify-content-center">
+                <div class="col-10">
+                  <img class="card-img-bottom" src="app/img/delete.png" id="delete">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <span id="deleteName"></span>
+                </div>
+              </div>
+            </div>
+          <!-- </div> -->
+      
+      
+          <!-- <div class="row"> -->
+      
+            <div class="col select-area border d-flex align-content-center flex-wrap justify-content-center">
+              <div class="row justify-content-center">
+                <div class="col-10">
+                  <img class="card-img-bottom" src="app/img/lock.png" id="lock">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <span id="lockName"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="w-100"></div>
+        
+            <div class="col select-area border d-flex align-content-center flex-wrap justify-content-center">
+              <div class="row justify-content-center">
+                <div class="col-10">
+                  <img class="card-img-bottom" src="app/img/save.png" id="save">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <span id="saveName"></span>
+                </div>
+              </div>
+            </div>
+        
+            <div class="col select-area border d-flex align-content-center flex-wrap justify-content-center">
+              <div class="row justify-content-center">
+                <div class="col-10">
+                  <div>
+                    <img class="card-img-bottom" src="app/img/folder.png" id="folder">
+                  </div> 
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <span id="folderName"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col select-area border d-flex align-content-center flex-wrap justify-content-center">
+                <div class="row justify-content-center">
+                  <div class="col-10">
+                    <img class="card-img-bottom" src="app/img/setup.png" id="setup">
+                    <!-- <img class="card-img-bottom" src="app/img/setup_white.svg" id="add2"> -->
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <span id="setupName"></span>
+                  </div>
+                </div>
+              </div>
+              
+          </div>
+
+
+
+
+    </div>
+
+  </body>
+</html>

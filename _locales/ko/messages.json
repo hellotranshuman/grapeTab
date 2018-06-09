@@ -1,0 +1,36 @@
+{
+    "service_description": {
+        "description": "서비스 설명",
+        "message": "크롬 탭 관리 프로그램"
+    },
+
+    "list_function_name": {
+        "description": "목록 기능명",
+        "message": "목록"
+    },
+
+    "delete_function_name": {
+        "description": "삭제 기능명",
+        "message": "삭제"
+    },
+
+    "lock_function_name": {
+        "description": "잠금 기능명",
+        "message": "잠금"
+    },
+
+    "save_function_name": {
+        "description": "저장 기능명",
+        "message": "저장"
+    },
+
+    "folder_function_name": {
+        "description": "묶음 기능명",
+        "message": "묶음"
+    },
+
+    "setup_function_name": {
+        "description": "설정 기능명",
+        "message": "설정"
+    }
+}

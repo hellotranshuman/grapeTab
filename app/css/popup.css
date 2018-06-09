@@ -1,0 +1,37 @@
+/* body 태그에 사용되는 CSS 설정 */
+body {
+    width   : 360px;
+    height  : 255px;
+    padding : 0.5rem;
+
+    /* 여기 부터는 드래그 방지 */
+    -webkit-touch-callout : none;
+    -webkit-user-select   : none;
+    -khtml-user-select    : none;
+    -moz-user-select      : none;
+    -ms-user-select       : none;
+    user-select           : none;
+}
+
+/* 메인페이지 선택항목들에 적용되는 CSS 설정 */
+.select-area {
+    height  : 120px;
+}
+
+/* 메인페이지 선택항목들 위에 마우스가 올라가면 적용될 CSS 설정 */
+.select-area:hover {
+    background  : gray;
+    cursor      : pointer;
+}
+
+/* 
+#addSelct img:last-child{
+    display: none;
+}
+
+#addSelct:hover img:first-child{
+    display: none;
+}
+#addSelct:hover img:last-child{
+    display: inline-block;
+} */
