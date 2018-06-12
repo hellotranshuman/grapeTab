@@ -1,5 +1,9 @@
 /* body 태그에 사용되는 CSS 설정 */
 body {
+    width   : 700px;
+    height  : 500px;
+    padding : 0.5rem;
+
     /* 드래그 방지 */
     -webkit-touch-callout : none;
     -webkit-user-select   : none;
