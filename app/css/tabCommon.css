@@ -1,7 +1,11 @@
 body {          
-    width   : 650px;
-    height  : 300px;
-    padding : 0.5rem;
+    /* 드래그 방지 */
+    -webkit-touch-callout : none;
+    -webkit-user-select   : none;
+    -khtml-user-select    : none;
+    -moz-user-select      : none;
+    -ms-user-select       : none;
+    user-select           : none;
 }
 
 /* .list-string {
@@ -10,4 +14,35 @@ body {
 
 table {
     width : 650px;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+
+.favIcon-img {
+    width: 25px;
+}
+
+.tab-title-cell {
+    width: 280px;
+    max-width: 280px;
+}
+
+.tab-url-cell {
+    width: 300px;
+    max-width: 300px;
+}
+
+
+
+ /* .table-striped tbody tr:nth-of-type(odd){
+     background-color:rgba(46, 252, 132, 0.418);
+} */
+
+ /* .table-striped tbody tr:nth-of-type(odd){
+     background-color:rgba(46, 252, 132, 0.418)
+} */
+
+/* bootstrap class 수정 */
+.table-hover tbody tr:hover{
+    background-color:rgba(46, 252, 132, 0.418);
 }

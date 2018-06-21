@@ -1,6 +1,6 @@
 /* body 태그에 사용되는 CSS 설정 */
 body {
-    width   : 700px;
+    width   : 735px;
     height  : 500px;
     padding : 0.5rem;
 
@@ -11,4 +11,14 @@ body {
     -moz-user-select      : none;
     -ms-user-select       : none;
     user-select           : none;
+}
+
+#nav-tab{
+    height: 40px;
+}
+
+/* content가 출력되는 iframe 영역 */
+#iframeContentArea{
+    width: 730px;
+    height: 450px;
 }

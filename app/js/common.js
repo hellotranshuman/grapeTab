@@ -11,4 +11,3 @@ function setFunctionName(dataArray) {
         $("#" + dataArray[iCount]).prop('innerHTML', chrome.i18n.getMessage(mainFunctionName[iCount]));
     }
 };
-

@@ -22,12 +22,20 @@ function mainImageDragSet(){
 // 클릭하여 이동할 페이지 주소를 설정하는 함수
 function setMovePage(){
     // select-area를 class로 가지는 모든 엘리먼트를 배열로 대입합니다.
-    var getSelectAreaArr = $('.select-area');
+    var getSelectAreaArr = $('.select-area');   
 
     // 클릭이벤트를 추가합니다.
     getSelectAreaArr.each(function(index){
+        // console.log('move number');
+        // console.log(index);
+        console.log($(this));
+
+
         $(this).on('click', function(){
             document.location.href = "app/html/view.html?page=" + index;
+
+            console.log('move number');
+            console.log(index);
         });
     });    
 }
@@ -62,8 +70,9 @@ function changeImg(){
     });
 }
 
-// DOM이 완전히 로드되면 이벤트 리스너를 추가합니다.
-document.addEventListener('DOMContentLoaded', function(){
+
+// 이미지를 포함한 모든 요소들이 로드 완료되면 실행
+$(window).on('load', function(){
     // 메인 이미지 6개를 드래그 하지 못하도록 하는 함수
     mainImageDragSet();
     // common.js에 선언되어 있는 setFunctionName() 함수를 호출하여 주요 기능의 이름값이 저장된 배열을 반환받습니다.
@@ -72,5 +81,4 @@ document.addEventListener('DOMContentLoaded', function(){
     changeImg();
     // 클릭하여 이동할 페이지 주소를 설정하는 함수
     setMovePage();
-
 });
