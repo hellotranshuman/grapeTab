@@ -1,8 +1,9 @@
 /* body 태그에 사용되는 CSS 설정 */
 body {
-    width   : 360px;
-    height  : 255px;
-    padding : 0.5rem;
+    /* width   : 270px;
+    height  : auto;  */
+    /* margin  : 0.5rem; 
+    padding : 0.5rem; */
 
     /* 여기 부터는 드래그 방지 */
     -webkit-touch-callout : none;
@@ -13,14 +14,27 @@ body {
     user-select           : none;
 }
 
+#main {
+    width   : 270px;
+    height  : auto;
+    margin: 0%;
+    padding: 0%;
+}
+
+
 /* 메인페이지 선택항목들에 적용되는 CSS 설정 */
-.select-area {
-    height  : 120px;
+/* .select-area {
+
+} */
+
+.select-area-style {
+    height  : 60px;
+    /* width   : 100%; */
 }
 
 /* 메인페이지 선택항목들 위에 마우스가 올라가면 적용될 CSS 설정 */
 .select-area:hover {
-    background  : gray;
+    background  : rgb(168, 167, 167);
     cursor      : pointer;
 }
 

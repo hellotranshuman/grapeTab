@@ -1,5 +1,5 @@
 // 메인 이미지 6개에 대응하는 span 태그 id 이름의 배열
-var navBarNameArr = ['listNav', 'deleteNav', 'lockNav', 'saveNav', 'folderNav', 'setupNav'];
+var navBarNameArr = ['listNav', 'saveNav', 'setupNav'];
 
 // 네비게이션바에 click에 따른 페이지이동 이벤트를 추가하는 함수
 function moveContentPage() {
@@ -38,8 +38,8 @@ function setNavMovePage(){
         location.href.lastIndexOf('=') + 1
     );
 
-    console.log('get parameter');
-    console.log(getParameter);
+    // console.log('get parameter');
+    // console.log(getParameter);
 
     // popup.js에서 선택한 것에 해당하는 네비게이션바가 활성화되도록 class값을 변경합니다.
     $('#' + navBarNameArr[getParameter]).attr('class', 'nav-item nav-link active');

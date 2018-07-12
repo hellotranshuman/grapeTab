@@ -2,40 +2,35 @@
 <html>
   <head>
     <meta charset="utf-8">
-    
     <!-- bootstrap css file-->
     <link href="../bootstrap/bootstrap.min.css" rel="stylesheet" media="screen">
-     
-    <style>
-      body{          
-        width   : 200px;
-        height  : 200px;
-        padding : 0.5rem;
-      }
-
-    </style>
+    <!-- tabCommon css file, 공통 css 설정 -->
+    <link href="../css/tabCommon.css" rel="stylesheet" type="text/css">
   </head>
   <body>
     <!-- jquery -->
     <script src="../jquery/jquery-3.3.1.min.js"></script>
     <!-- bootstrap js file -->
     <script src="../bootstrap/bootstrap.bundle.min.js"></script>
-    <!--  -->
+    <!-- common.js file -->
     <script src="../js/common.js"></script>
-    <!--  -->
-    <!-- <script src="../js/list.js"></script> -->
+    <!-- save.js file -->
+    <script src="../js/save.js"></script>
 
-
-<!-- active -->
     <div class="contain">
-
-       
-      good save
-
-     
-
-      
+      <table class="table table-hover table-striped table-border-css">
+        <thead>
+          <tr scope="row">
+            <th scope="col">No</th>
+            <th scope="col">icon</th>
+            <th scope="col">title</th>
+            <th scope="col">url</th>
+          </tr>
+        </thead>
+        <tbody id="tabListBody">
+        </tbody>
+      </table>
+      <div id="modalArea"></div>
     </div>
-
   </body>
 </html>

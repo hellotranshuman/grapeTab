@@ -20,8 +20,8 @@
     },
 
     "save_function_name": {
-        "description": "저장 기능명",
-        "message": "저장"
+        "description": "보관 기능명",
+        "message": "보관"
     },
 
     "folder_function_name": {

@@ -18,6 +18,9 @@ function getAllTabList() {
             var tabUrl          = tab.url;          // tabl의 url
             var tabFavIconUrl   = tab.favIconUrl;   // tab의 favIconUrl
 
+
+            console.log(tab);
+
             // tr태그를 생성합니다.
             $('#tabListBody').append($('<tr/>', {
                 id : count + '-tr'
@@ -60,6 +63,8 @@ function getAllTabList() {
                 text    : tabUrl
             }));
 
+            /************************* 여기서 부터 Modal 생성 *************************/
+ 
             // modal 관련 태그를 추가합니다.
             $('#modalArea').append($('<div/>', {
                 class   : 'modal fade',
@@ -153,24 +158,63 @@ function getAllTabList() {
 
             var $modalFooter = $('#' + count + '-modalFooter');
 
+            // Remove 버튼
             $modalFooter.append($('<button/>', {
-                class   : 'btn btn-outline-dark',
-                id      : count + '-modalCloseBtn',
-                text    : 'Close',
-                type    : 'button'
+                class   : 'btn btn-outline-danger border-0',
+                id      : count + '-modalRemoveBtn',
+                text    : 'Remove',
+                type    : 'button',
+                click   : function(e){
+                    console.log('remove ~~~~~~~~~');
+                    // tab 삭제
+                    chrome.tabs.remove(tab.id);
+                    // tab 목록 새로고침
+                    window.location.reload();
+                }
             }));
-            $('#' + count + '-modalCloseBtn').attr('data-dismiss', 'modal');
 
             $modalFooter.append($('<button/>', {
-                class   : 'btn btn-primary',
-                id      : count + '-modalTestBtn',
-                text    : 'test~~',
+                class   : 'btn btn-outline-warning border-0',
+                id      : count + '-modalLockBtn',
+                text    : 'Lock',
                 type    : 'button'
+            }));
+
+            // Save 버튼
+            $modalFooter.append($('<button/>', {
+                class   : 'btn btn-outline-success border-0',
+                id      : count + '-modalSaveBtn',
+                text    : 'Save',
+                type    : 'button',
+                click   : function(e){
+                    var dataObj = new Date();               // Date 객체를 생성합니다.
+                    var month   = dataObj.getMonth() + 1;   // 현재 달을 구합니다.
+                    var today   = dataObj.getDate()         // 현재 일을 구합니다.
+
+                    // remove 한 tab에 대한 정보라는 사실을 background.js에서도 구분할 수 있도록 값을 대입합니다.
+                    tab['saveTab'] = true;
+
+                    // tab의 key값을 저장합니다.
+                    // grapetab 문자열 + tab의 id값 + 현재 달 + 현재일 을 함쳐서 key값으로 합니다.
+                    tab['key'] = 'grapetab' + tab['id'] + '_' + month + '_' + today;
+
+                    // console.log('-- save button --');
+                    // console.log(tab);
+
+                    // remove tab list를 만들기 위해 필요한 tab 정보를 background.js로 전달
+                    chrome.runtime.sendMessage(
+                        
+                        JSON.stringify(tab),
+                        function(response) {
+                            console.log('response : ' + response);
+                        }
+                    );
+                }
             }));
 
             // copy 버튼
             $modalFooter.append($('<button/>', {
-                class   : 'btn btn-outline-success copyBtn',
+                class   : 'btn btn-outline-primary border-0',
                 id      : count + '-modalCopyBtn',
                 text    : 'Copy',
                 type    : 'button',
@@ -183,6 +227,38 @@ function getAllTabList() {
                     copyElement.remove();
                 }
             }));
+
+            // focus 버튼
+            $modalFooter.append($('<button/>', {
+                class   : 'btn btn-outline-info border-0',
+                id      : count + '-modalMoveBtn',
+                text    : 'Move',
+                type    : 'button',
+                click   : function(e){
+                    console.log('move button---------------------------------------');
+                    console.log(tab);
+                    console.log(tab['id']);
+
+                    // 해당 tab을 update합니다, 동시에 브라우저의 화면을 해당 tab으로 이동합니다.
+                    chrome.tabs.update(tab['id'], {
+                        url : tab['url'],
+                        active : true
+                    }, function(result){
+                        console.log('------- update method callback inner -------');
+                        console.log(result);
+                    })
+
+                }
+            }));
+
+            // modal 닫기 버튼
+            $modalFooter.append($('<button/>', {
+                class   : 'btn btn-outline-dark border-0',
+                id      : count + '-modalCloseBtn',
+                text    : 'Close',
+                type    : 'button'
+            }));
+            $('#' + count + '-modalCloseBtn').attr('data-dismiss', 'modal');
          
             // count값을 증가시킵니다.
             count++;
@@ -192,11 +268,43 @@ function getAllTabList() {
 
 
 // background.js 관련
-// var test = chrome.runtime.getBackgroundPage(page => {
-//     console.log(page);
-//     page.foo("send data @@@");
-//     console.log(page.foo());
+// var getting = chrome.runtime.getBackgroundPage(page => {
+//     console.log('~~~ page ~~~');
+//     // page.foo();
+
 // });
+
+
+var bg = chrome.extension.getBackgroundPage();
+
+console.log('list.js get background.js !!');
+// console.log(bg.test());
+
+
+// var getBackground = chrome.runtime.getBackgroundPage(page => {
+//     console.log('test function~');
+
+//     // var bg = chrome.extension.getBackgroundPage();
+
+//     var getTabsInfo = bg.getTabs();
+
+//     // var getTabsInfo = page.getTabs();
+
+//     console.log('tabs info');
+//     console.log(getTabsInfo);
+
+//     // page.test();
+//     // console.log(chrome.extension.getBackgroundPage());
+//     // page.test();
+// });
+
+
+// bg.test();
+
+
+// console.log(getBackground.foo());
+
+
 
 
 // bootstrap modal을 강제로 focus 하는 함수를 초기화 합니다. (copy 버튼을 구현하기 위해 필요)

@@ -1,5 +1,5 @@
 // 메인 이미지 6개에 대응하는 span 태그 id 이름의 배열
-var mainImageTitleName = ['listName', 'deleteName', 'lockName', 'saveName', 'folderName', 'setupName'];
+var mainImageTitleName = ['listName', 'saveName', 'setupName'];
 
 // 메인 이미지 6개를 드래그 하지 못하도록 하는 함수
 function mainImageDragSet(){
@@ -28,7 +28,7 @@ function setMovePage(){
     getSelectAreaArr.each(function(index){
         // console.log('move number');
         // console.log(index);
-        console.log($(this));
+        // console.log($(this));
 
 
         $(this).on('click', function(){

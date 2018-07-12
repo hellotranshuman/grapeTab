@@ -1,7 +1,7 @@
 /* body 태그에 사용되는 CSS 설정 */
 body {
-    width   : 735px;
-    height  : 500px;
+    width   : 730px;
+    height  : 490px;
     padding : 0.5rem;
 
     /* 드래그 방지 */
@@ -20,5 +20,7 @@ body {
 /* content가 출력되는 iframe 영역 */
 #iframeContentArea{
     width: 730px;
-    height: 450px;
+    height: 460px;
+    border: none;
 }
+
