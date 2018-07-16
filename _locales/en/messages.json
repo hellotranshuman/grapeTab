@@ -1,6 +1,31 @@
 {
     "service_description": {
-        "description": "service description",
+        "description": "Service description",
         "message": "chrom tab management program"
+    },
+
+    "list_function_name": {
+        "description": "List function name",
+        "message": "List"
+    },
+
+    "save_function_name": {
+        "description": "Save List function name",
+        "message": "Save List"
+    },
+
+    "setup_function_name": {
+        "description": "Setup function name",
+        "message": "Setup"
+    },
+
+    "setup_description": {
+        "description": "A value representing the character 「How to use」 on the setting page",
+        "message": "How to use"
+    },
+
+    "setup_description_contents": {
+        "description": "Text to explain how to use",
+        "message": "I used Google Translator.<br><hr> <br>This extension is a program that makes it easier to manage Chrome's tabs <br> The main features are List, Save List, and Setup <br> List is currently open Clicking on the list will bring up a page with five different buttons: 「Remove」, 「Move」, 「Save」, 「Copy」, 「Close」 <br><br>「Remove」 is the tab for the selected tab 「Move」 moves to the selected tab. 「Save」 saves the selected tab to the 「Save list」 「Copy」 saves the URL of the selected tab to the clipboard. <br> 「Close」is a function that closes the page <br><br>「Save List」is a function to list the tab by pressing the　「Save」button in the list This page shows three types of buttons: 「Remove」,　「Create」 <br><br> 「Remove」 removes the selected tab from the list <br> 「Creat」is a function to create a new tab that has the same URL as the selected tab <br>「Close」is a function to close the page <br><br>「Setup」is a function that can be seen in usage and so on."
     }
 }

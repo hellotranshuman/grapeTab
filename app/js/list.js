@@ -10,16 +10,13 @@ function getAllTabList() {
 
         for (let tab of tabs) {
             // favicon이 설정되어 있지 않는 경우 default값을 대입합니다.
-            if(tab.favIconUrl == undefined){
+            if(tab.favIconUrl == undefined || tab.favIconUrl == ""){
                 tab.favIconUrl = "../img/default_favicon.png";
             }
             
             var tabTitle        = tab.title;        // tab의 타이틀
             var tabUrl          = tab.url;          // tabl의 url
             var tabFavIconUrl   = tab.favIconUrl;   // tab의 favIconUrl
-
-
-            console.log(tab);
 
             // tr태그를 생성합니다.
             $('#tabListBody').append($('<tr/>', {
@@ -117,23 +114,23 @@ function getAllTabList() {
                 text : ' ' + tabTitle
             }));
 
-            // 상단 닫기 버튼
-            $modalHeader.append($('<button/>', {
-                class   : 'close',
-                id      : count + '-topCloseBtn',
-                type    : 'button',
-            }));
+            // // 상단 닫기 버튼
+            // $modalHeader.append($('<button/>', {
+            //     class   : 'close',
+            //     id      : count + '-topCloseBtn',
+            //     type    : 'button',
+            // }));
 
-            var $topCloseBtn = $('#' + count + '-topCloseBtn');
+            // var $topCloseBtn = $('#' + count + '-topCloseBtn');
 
-            $topCloseBtn.attr('data-dismiss', 'modal');
-            $topCloseBtn.attr('aria-label', 'Close');
+            // $topCloseBtn.attr('data-dismiss', 'modal');
+            // $topCloseBtn.attr('aria-label', 'Close');
 
-            $topCloseBtn.append($('<span/>', {
-                id      : count + '-closeSpan',
-                text : "X"
-            }));
-            $('#' + count + '-closeSpan').attr('aria-hidden', 'true');
+            // $topCloseBtn.append($('<span/>', {
+            //     id      : count + '-closeSpan',
+            //     text : "X"
+            // }));
+            // $('#' + count + '-closeSpan').attr('aria-hidden', 'true');
 
             $modalContent.append($('<div/>', {
                 class   : 'modal-body text-truncate',
@@ -165,7 +162,6 @@ function getAllTabList() {
                 text    : 'Remove',
                 type    : 'button',
                 click   : function(e){
-                    console.log('remove ~~~~~~~~~');
                     // tab 삭제
                     chrome.tabs.remove(tab.id);
                     // tab 목록 새로고침
@@ -173,12 +169,28 @@ function getAllTabList() {
                 }
             }));
 
+            // move 버튼
             $modalFooter.append($('<button/>', {
                 class   : 'btn btn-outline-warning border-0',
-                id      : count + '-modalLockBtn',
-                text    : 'Lock',
-                type    : 'button'
+                id      : count + '-modalMoveBtn',
+                text    : 'Move',
+                type    : 'button',
+                click   : function(e){
+                    // 해당 tab을 update합니다, 동시에 브라우저의 화면을 해당 tab으로 이동합니다.
+                    chrome.tabs.update(tab['id'], {
+                        url : tab['url'],
+                        active : true
+                    }, function(result){})
+
+                }
             }));
+
+            // $modalFooter.append($('<button/>', {
+            //     class   : 'btn btn-outline-warning border-0',
+            //     id      : count + '-modalLockBtn',
+            //     text    : 'Lock',
+            //     type    : 'button'
+            // }));
 
             // Save 버튼
             $modalFooter.append($('<button/>', {
@@ -198,17 +210,10 @@ function getAllTabList() {
                     // grapetab 문자열 + tab의 id값 + 현재 달 + 현재일 을 함쳐서 key값으로 합니다.
                     tab['key'] = 'grapetab' + tab['id'] + '_' + month + '_' + today;
 
-                    // console.log('-- save button --');
-                    // console.log(tab);
-
                     // remove tab list를 만들기 위해 필요한 tab 정보를 background.js로 전달
                     chrome.runtime.sendMessage(
-                        
                         JSON.stringify(tab),
-                        function(response) {
-                            console.log('response : ' + response);
-                        }
-                    );
+                        function(response) {});
                 }
             }));
 
@@ -228,29 +233,6 @@ function getAllTabList() {
                 }
             }));
 
-            // focus 버튼
-            $modalFooter.append($('<button/>', {
-                class   : 'btn btn-outline-info border-0',
-                id      : count + '-modalMoveBtn',
-                text    : 'Move',
-                type    : 'button',
-                click   : function(e){
-                    console.log('move button---------------------------------------');
-                    console.log(tab);
-                    console.log(tab['id']);
-
-                    // 해당 tab을 update합니다, 동시에 브라우저의 화면을 해당 tab으로 이동합니다.
-                    chrome.tabs.update(tab['id'], {
-                        url : tab['url'],
-                        active : true
-                    }, function(result){
-                        console.log('------- update method callback inner -------');
-                        console.log(result);
-                    })
-
-                }
-            }));
-
             // modal 닫기 버튼
             $modalFooter.append($('<button/>', {
                 class   : 'btn btn-outline-dark border-0',
@@ -259,69 +241,56 @@ function getAllTabList() {
                 type    : 'button'
             }));
             $('#' + count + '-modalCloseBtn').attr('data-dismiss', 'modal');
-         
+
+            // 현재 활성화 되어 있는 Tab의 boackground-color를 변경합니다.
+            if(tab['active']){
+                $('#' + count + '-tr').css('background-color', 'rgba(243, 229, 35, 0.3)');
+ 
+                // hover 기능 구현
+                // 마우스가 위에 있을 경우 다른 tab들에 적용되어있는 색상으로 변경되도록 하고
+                // 마우스가 내려올 경우 활성화 되어 있는 Tab을 나타내는 색상으로 변경합니다.
+                $('#' + count + '-tr').on({
+                    // 마우스가 올라왔을 때
+                    'mouseenter' : function(){
+                        $(this).css('background-color', 'rgba(46, 252, 132, 0.4)');
+                    },
+
+                    // 마우스가 내려왔을 때
+                    'mouseleave' : function(){
+                        $(this).css('background-color', 'rgba(243, 229, 35, 0.3)');
+                    }
+                });
+            }
             // count값을 증가시킵니다.
             count++;
         }
     });
 }
 
-
+/************************************************************
+ * background.js 접근 방법
 // background.js 관련
-// var getting = chrome.runtime.getBackgroundPage(page => {
-//     console.log('~~~ page ~~~');
-//     // page.foo();
-
-// });
-
-
-var bg = chrome.extension.getBackgroundPage();
-
-console.log('list.js get background.js !!');
-// console.log(bg.test());
-
-
-// var getBackground = chrome.runtime.getBackgroundPage(page => {
-//     console.log('test function~');
-
-//     // var bg = chrome.extension.getBackgroundPage();
-
-//     var getTabsInfo = bg.getTabs();
-
-//     // var getTabsInfo = page.getTabs();
-
-//     console.log('tabs info');
-//     console.log(getTabsInfo);
-
-//     // page.test();
-//     // console.log(chrome.extension.getBackgroundPage());
-//     // page.test();
-// });
-
-
-// bg.test();
-
-
-// console.log(getBackground.foo());
-
-
-
+var getting = chrome.runtime.getBackgroundPage(page => {
+    console.log('~~~ page ~~~');
+    // page.foo();
+});
+************************************************************/
 
 // bootstrap modal을 강제로 focus 하는 함수를 초기화 합니다. (copy 버튼을 구현하기 위해 필요)
 $.fn.modal.Constructor.prototype._enforceFocus = function() {};
 
 // DOM 생성된 후 실행
 $(document).ready(function(){
-    console.log('ready');
+    // console.log('ready');
     
     // 동적으로 tab 목록을 생성하는 함수
     getAllTabList();
-
-
 });
 
 // 이미지를 포함한 모든 요소들이 로드 완료되면 실행
 $(window).on('load', function(){
-    console.log('load');
+    // console.log('load');
 
+    // CSS로 투명도가 0인 값을 1로 변경하면서 fadeIn을 실시하는 함수
+    $('.tableMainContain').animate({'opacity':'1'}, 500);
 });

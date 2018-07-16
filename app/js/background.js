@@ -4,25 +4,17 @@ console.log('Welcome to background.js');
 // key값을 저장하는 배열이 존재하지 않을 경우 생성합니다.
 function init(){
     chrome.storage.sync.get(['saveTabKeys'], function(result){
-        console.log('save tab keys start-- : ' + result);
-        console.log(result);
-        
         // saveTabKeys 값이 저장되어 있지 않은 경우 빈배열로 초기화합니다.
         if(result['saveTabKeys'] === undefined){
             var keyArray = {};
             keyArray['saveTabKeys'] = [];
 
-            chrome.storage.sync.set(keyArray, function(result){
-                console.log('save tab keys set?');
-                console.log(result);
-            });
+            chrome.storage.sync.set(keyArray, function(result){});
         }
     })
 }
 
 init();
-
-
 
 // var tabToUrl = {};
 
@@ -33,18 +25,9 @@ init();
 // });
 
 // tab이 삭제되면 실행되는 이벤트
-chrome.tabs.onRemoved.addListener(function(tabId, removeInfo){
-    console.log('@@@@@ onRemoved event~~ @@@@@')
-    console.log(tabId);
-    console.log(removeInfo);
-    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-    // console.log(chrome.tabs.get(tabId));
-
-    // chrome.tabs.create();
-});
-
-
-
+// chrome.tabs.onRemoved.addListener(function(tabId, removeInfo){
+//     chrome.tabs.create();
+// });
 
 /*
 ※삭제 기능 구현
@@ -56,15 +39,7 @@ chrome.tabs.onRemoved.addListener(function(tabId, removeInfo){
 
 // save할 tab을 저장하는 함수
 function setSaveTab(tabObj){
-    console.log('~~~~~ setSaveTab function start ~~~~~');
-    console.log(tabObj);
-
-
     var tabKey = tabObj['key'];
-    console.log('tabKey check ~~~~~~~~!!!!!!!!!!!!!!!');
-    console.log(tabKey);
-
-
     // 저장할 tab 정보가 저장될 변수
     var saveTabObj = {};
     saveTabObj[tabKey] = JSON.stringify(tabObj);
@@ -75,32 +50,14 @@ function setSaveTab(tabObj){
         console.log('~~~~~ setSaveTab function Set ~~~~~');
     });
 
-    console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ saveTabObj test ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
-    console.log(saveTabObj);
-    console.log(tabKey);
-
-
-
     // 저장되었는지 확인
     chrome.storage.sync.get(tabKey, function(result){
 
-        console.log('haha');
-        console.log(result);
-        console.log(result[tabKey]);
-
         var tabObjValue = JSON.parse(result[tabKey]);
-
-        console.log('save tab success????????');
-        console.log(tabObjValue);
-        console.log(tabObjValue['url']);
 
         // 저장에 성공하였을 경우 key값을 추가하여 저장합니다.
         if(tabObjValue['url']){
             chrome.storage.sync.get(['saveTabKeys'], function(result){
-                console.log(result['saveTabKeys']);
-                console.log(typeof result['saveTabKeys']);
-                console.log(tabObjValue['key']);
-
                 // key값이 들어 있는 배열을 구한 뒤 현재 save할 tab의 key값을 저장합니다.
                 var keyArray = result['saveTabKeys'];
                 keyArray.push(tabObjValue['key'])
@@ -109,14 +66,11 @@ function setSaveTab(tabObj){
                 var keyObj = {};
                 keyObj['saveTabKeys'] = keyArray
 
-                console.log(keyObj);
-
                 // 새로운 key값이 추가된 배열을 저장합니다.
                 chrome.storage.sync.set(keyObj, function(){
                     console.log('new key array insert success ~~');
                 });
             });
-            console.log('key array push end --');
         }
     })
 }
@@ -124,10 +78,7 @@ function setSaveTab(tabObj){
 // Message를 얻습니다.
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-        console.log('$$$ Save Button onMessage $$$');
-
         var requestObj = JSON.parse(request);
-        console.log(requestObj);
 
         // save tab의 정보를 받았을 경우
         if(requestObj['saveTab']){
@@ -139,38 +90,22 @@ chrome.runtime.onMessage.addListener(
 
             // 중복된 탭이 저장되지 않도록 합니다, 중복된 탭일 경우 경고문을 출력하고 중복이지 않을 경우 해당 탭을 추가합니다.
             chrome.storage.sync.get(['saveTabKeys'], function(result){
-                if(result['saveTabKeys'].includes(saveTabObj['key'])){
-                    console.log('The tab already exists!');
-                    alert('The tab already exists!');
-                    // $('<div>').alert();
-                    
-                    // $('div').append($('<div>', {
-                    //     class : 'alert alert-primary',
-                    //     role : 'alert'
-                    // }));
+                var maxSaveTabNumber = 30;   // 저장할 수 있는 최대개수를 지정하는 변수
 
+                // 저장하는 개수가 지정된 개수를 넘으면 경고창이 출력되도록 합니다.
+                if(result['saveTabKeys'].length >= maxSaveTabNumber){
+                    alert("You can not save any more.\nThe maximum number of storages is 30.")
                 } else {
-                    console.log('add tab!!');
-                    // save할 tab을 저장하는 함수 
-                    setSaveTab(saveTabObj);
+                    if(result['saveTabKeys'].includes(saveTabObj['key'])){
+                        alert('The tab already exists!');
+                    } else {
+                        // save할 tab을 저장하는 함수 
+                        setSaveTab(saveTabObj);
+                    }
                 }
             })
         } else {
-            console.log('save tab info false!!');
+            // console.log('save tab info false!!');
         }
-
-        console.log('$$$ end onMessage end $$$');
+        // console.log('$$$ end onMessage end $$$');
 });
-
-
-// 실행중인 Tab를 구하는 함수
-// function getTabs(){
-//     chrome.tabs.query({
-//         //  ----- currentWindow: true,// windowType: 'normal' -----
-//     },function(tabs) {
-//         alert('chrome.tabs.query() ing~~');
-        
-        
-//         return JSON.stringify(tabs);
-//     })
-// }

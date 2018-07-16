@@ -6,31 +6,26 @@
 
     "list_function_name": {
         "description": "목록 기능명",
-        "message": "목록"
-    },
-
-    "delete_function_name": {
-        "description": "삭제 기능명",
-        "message": "삭제"
-    },
-
-    "lock_function_name": {
-        "description": "잠금 기능명",
-        "message": "잠금"
+        "message": "List"
     },
 
     "save_function_name": {
-        "description": "보관 기능명",
-        "message": "보관"
-    },
-
-    "folder_function_name": {
-        "description": "묶음 기능명",
-        "message": "묶음"
+        "description": "저장 목록 기능명",
+        "message": "Save List"
     },
 
     "setup_function_name": {
         "description": "설정 기능명",
-        "message": "설정"
+        "message": "Setup"
+    },
+
+    "setup_description": {
+        "description": "설정 페이지 사용 설명 이라는 문자열을 나타내는 값",
+        "message": "사용 설명"
+    },
+
+    "setup_description_contents": {
+        "description": "사용방법을 나타내는 문자열",
+        "message": "이 확장프로그램은 크롬 탭을 관리해주는 프로그램입니다.<br><br>제공되는 기능으로는 「List」「Save List」「Setup」3가지 입니다. <br>「List」은 현재 열려있는 탭을 리스트로 만들어 출력합니다. <br>또 출력된 탭을 click 하면 「Remove」「Move」「Save」「Copy」「Close」5종류의 버튼이 존재하는 창이 출력됩니다. <br><br>「Remove」는 선택된 탭을 지우는 기능 <br>「Move」는 선택한 탭으로 이동하는 기능 <br>「Save」는 선택한 창을 「보관」페이지에 저장하는 기능 <br>「Copy」는 선택한 탭의 URL을 클립보드에 저장하는 기능 <br>「Close」는 창을 닫는 기능입니다. <br><br>「Save List」는 목록에서 「Save」버튼으로 저장한 탭을 리스트화 해주는 기능입니다. 여기서는 「Remove」「Create」「Close」3종류의 버튼을 제공합니다. <br><br>「Remove」은 해당 탭을 리스트에서 지우는 기능 <br>「Create」는 선택한 탭과 같은 URL을 가진 사이트를 새로운 탭으로 만들어 주는 기능 <br>「Close」는 창을 닫는 기능입니다. <br><br>「Setup」은 사용방법의 설명 등을 볼 수 있는 기능입니다."
     }
 }

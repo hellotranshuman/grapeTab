@@ -2,35 +2,63 @@
 <html>
   <head>
     <meta charset="utf-8">
-    
+
     <!-- bootstrap css file-->
     <link href="../bootstrap/bootstrap.min.css" rel="stylesheet" media="screen">
-     
-    <style>
-      body{          
-        width   : 200px;
-        height  : 200px;
-        padding : 0.5rem;
-      }
-
-    </style>
+    <!-- common css file, 공통 css 설정 -->
+    <link href="../css/common.css" rel="stylesheet" type="text/css">
+    <!-- setup css file -->
+    <link href="../css/setup.css" rel="stylesheet" type="text/css">
   </head>
   <body>
     <!-- jquery -->
     <script src="../jquery/jquery-3.3.1.min.js"></script>
     <!-- bootstrap js file -->
     <script src="../bootstrap/bootstrap.bundle.min.js"></script>
-    <!--  -->
+    <!-- common.js file -->
     <script src="../js/common.js"></script>
-    <!--  -->
-    <!-- <script src="../js/list.js"></script> -->
+    <!-- setup.js file -->
+    <script src="../js/setup.js"></script>
+
+    <div class="container-fluid tableMainContain" id="mainContain">
+      <div class="row">
+        <div class="col">
+
+            <div class="alert alert-light" role="alert">
+                <h4 class="alert-heading" id="setupDescriptionTitle"></h4>
+                <p>
+                  <button type="button" class="btn btn-outline-primary" id="instructionModal" data-toggle="modal" data-target="#exampleModalLong">
+                  </button>
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="setupModalTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="setupModalTitle">Modal title</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body" id="setupModalBody">
+                          hahaha
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-outline-dark btn-lg btn-block border-0" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </p>
+                <hr>
+              </div>
 
 
-<!-- active -->
-    <div class="contain">
+        </div>
+      </div>
 
        
-      Setup 미구현
+      
 
      
 

@@ -1,7 +1,7 @@
-// 메인 이미지 6개에 대응하는 span 태그 id 이름의 배열
+// 메인 이미지 3개에 대응하는 span 태그 id 이름의 배열
 var mainImageTitleName = ['listName', 'saveName', 'setupName'];
 
-// 메인 이미지 6개를 드래그 하지 못하도록 하는 함수
+// 메인 이미지 3개를 드래그 하지 못하도록 하는 함수
 function mainImageDragSet(){
     for(var iCount = 0; iCount < mainImageName.length; iCount++){
         // draggable 라는 속성을 false로 설정합니다.
@@ -26,16 +26,8 @@ function setMovePage(){
 
     // 클릭이벤트를 추가합니다.
     getSelectAreaArr.each(function(index){
-        // console.log('move number');
-        // console.log(index);
-        // console.log($(this));
-
-
         $(this).on('click', function(){
             document.location.href = "app/html/view.html?page=" + index;
-
-            console.log('move number');
-            console.log(index);
         });
     });    
 }
@@ -58,13 +50,11 @@ function changeImg(){
 
         // 마우스가 위에 있을때 실행 될 이벤트를 추가합니다.
         $(this).on('mouseover', function(){
-            // console.log('----- over -----' + index);
             $imgObj.attr('src', afterImgName);
         });
 
         // 마우스가 위에서 벗어 났을때 실행 될 이벤트를 추가합니다.
         $(this).on('mouseout', function(){
-            // console.log('&&&&& out &&&&&' + index);
             $imgObj.attr('src', beforeImgName);
         });
     });

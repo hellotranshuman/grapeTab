@@ -30,16 +30,11 @@ function moveContentPage() {
 // popup.html에서 선택한 것에 맞게 view.html 페이지가 출력되도록 하는 함수
 // 1. 전달된 파라미터 획득, 2. 파라미터 값에 해당하는 네비게이션바 및 iframe src 설정
 function setNavMovePage(){
-    var sendParameter = null;
-    
     // 참고 전달받은 값 내역 [전달받을 값 : 나타내는 페이지] 
     // -> [0:list], [1:delete], [2:lock], [3:save], [4:folder], [5:setup]
     var getParameter = location.href.substr(
         location.href.lastIndexOf('=') + 1
     );
-
-    // console.log('get parameter');
-    // console.log(getParameter);
 
     // popup.js에서 선택한 것에 해당하는 네비게이션바가 활성화되도록 class값을 변경합니다.
     $('#' + navBarNameArr[getParameter]).attr('class', 'nav-item nav-link active');

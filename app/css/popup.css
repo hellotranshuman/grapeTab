@@ -1,10 +1,5 @@
 /* body 태그에 사용되는 CSS 설정 */
 body {
-    /* width   : 270px;
-    height  : auto;  */
-    /* margin  : 0.5rem; 
-    padding : 0.5rem; */
-
     /* 여기 부터는 드래그 방지 */
     -webkit-touch-callout : none;
     -webkit-user-select   : none;
@@ -21,12 +16,6 @@ body {
     padding: 0%;
 }
 
-
-/* 메인페이지 선택항목들에 적용되는 CSS 설정 */
-/* .select-area {
-
-} */
-
 .select-area-style {
     height  : 60px;
     /* width   : 100%; */
@@ -38,14 +27,8 @@ body {
     cursor      : pointer;
 }
 
-/* 
-#addSelct img:last-child{
-    display: none;
+/* 메인페이지 기능명 CSS98+9z */
+.listItemString {
+    font-size: 1.2em;
+    font-style: oblique;
 }
-
-#addSelct:hover img:first-child{
-    display: none;
-}
-#addSelct:hover img:last-child{
-    display: inline-block;
-} */

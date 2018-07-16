@@ -2,5 +2,30 @@
     "service_description": {
         "description": "サービス説明",
         "message": "chrom tab management program"
+    },
+
+    "list_function_name": {
+        "description": "タブリスト機能の名前",
+        "message": "List"
+    },
+
+    "save_function_name": {
+        "description": "セーブリスト機能の名前",
+        "message": "Save List"
+    },
+
+    "setup_function_name": {
+        "description": "設定機能の名前",
+        "message": "Setup"
+    },
+
+    "setup_description": {
+        "description": "設定ページに「使用方法について」という文字を表す値",
+        "message": "使用方法について"
+    },
+
+    "setup_description_contents": {
+        "description": "使用方法を説明する文章",
+        "message": "この拡張機能はChromeのタブをより簡単に管理できるようにするプログラムです。<br><br>主な機能としては「List」「Save List」「Setup」の三つです。　<br>「List」は現在開いているタブをリスト化する機能です。　<br>また、リストのclickすると「Remove」「Move」「Save」「Copy」「Close」5種類のボタンがあるページが現れます。 <br><br>「Remove」は選んだタブを消す機能 <br>「Move」は選んだタブに移動する機能 <br>「Save」は選んだタブを「セーブリスト」に保存する機能 <br>「Copy」は選んだタブのURLをクリップボードに保存する機能 <br>「Close」はページを閉じる機能です。 <br><br>「Save List」はリストで「Save」ボタンを押したタブをリスト化する機能です。このページでは「Remove」「Create」「Close」3種類のボタンを提供します。 <br><br>「Remove」は選んだタブをリストから消す機能 <br>「Create」は選んだタブと同じURLを持っている新しいタブを作る機能 <br>「Close」はページを閉じる機能です。 <br><br>「Setup」は使用方法などを見られる機能です。"
     }
 }

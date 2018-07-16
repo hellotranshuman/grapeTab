@@ -2,51 +2,45 @@
 <html>
   <head>
     <meta charset="utf-8">
-    
     <!-- bootstrap css file-->
     <link href="app/bootstrap/bootstrap.min.css" rel="stylesheet" media="screen">
     <!-- popup.html에서 사용되는 CSS -->
     <link href="app/css/popup.css" rel="stylesheet" type="text/css">
-
   </head>
   <body>
     <!-- jquery -->
     <script src="app/jquery/jquery-3.3.1.min.js"></script>
     <script src="app/js/common.js"></script>
     <script src="app/js/popup.js"></script>
-
     <div class="contain" id="main">
-    <!-- <div id="main"> -->
       <!-- list -->
       <div class="row">
         <div class="col select-area select-area-style border d-flex align-content-center flex-wrap justify-content-center">
           <div class="row justify-content-center">
             <div class="col-4 align-self-center">
-                <img class="card-img-bottom" src="app/img/list.png" id="list">
+                <img class="card-img-bottom" width="50" src="app/img/list.png" id="list">
             </div>
             <!-- name -->
-            <div class="col-4 align-self-center">
-                <span id="listName"></span>
+            <div class="col-5 align-self-center">
+                <span id="listName" class="listItemString"></span>
             </div>
           </div>
         </div>
       </div>
-
       <!-- save -->
       <div class="row">
         <div class="col select-area select-area-style border d-flex align-content-center flex-wrap justify-content-center">
           <div class="row justify-content-center">
-            <div class="col-4 align-self-center">
+            <div class="col-3 align-self-center">
                 <img class="card-img-bottom" src="app/img/save.png" id="save">
             </div>
             <!-- name -->
-            <div class="col-4 align-self-center">
-                <span id="saveName"></span>
+            <div class="col-5 align-self-center">
+                <span id="saveName" class="listItemString"></span>
             </div>
           </div>
         </div>
       </div>
-
       <!-- Setup -->
       <div class="row">
         <div class="col select-area select-area-style border d-flex align-content-center flex-wrap justify-content-center">
@@ -55,15 +49,12 @@
               <img class="card-img-bottom" src="app/img/setup.png" id="setup">
             </div>
             <!-- name -->
-            <div class="col-4 align-self-center">
-              <span id="setupName"></span>
+            <div class="col-5 align-self-center">
+              <span id="setupName" class="listItemString"></span>
             </div>
           </div>
         </div>
       </div>
-
-    <!-- </div> -->
-  </div>
-      <!-- <div class="w-100"></div> -->     
+    </div>
   </body>
 </html>
