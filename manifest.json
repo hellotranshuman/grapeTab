@@ -3,7 +3,7 @@
   
     "name": "GrapeTab (chrom tab management program)",
     "description": "__MSG_service_description__",
-    "version": "1.0.1",
+    "version": "1.4.1",
 
     "default_locale":"en",
    
@@ -33,6 +33,7 @@
     "permissions": [
       "activeTab",
       "storage",
-      "tabs"
+      "tabs",
+      "unlimitedStorage"
     ]
 }
